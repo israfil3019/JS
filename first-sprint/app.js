@@ -45,7 +45,7 @@ g = "3";
 console.log(typeof g)
 
 var myName = 'israfil';
-console.log('merhaba ${Myname}');
+console.log(`merhaba ${myName}`);
 
 console.log(0.1 + 0.2)
 console.log(Math.floor(0.1 + 0.2));
