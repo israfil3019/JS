@@ -13,8 +13,11 @@
 //   }
 // }
 // Array Solutions
-
-  // Push Method
+// 1 Reverse Method
+function reverseWords(textArray) {
+  input = textArray.join("").split(" ").reverse().join(" ").split("");
+}
+  // 2 Push Method
   // function reverseWords(textArray) {
   //   if (textArray.join("").trim().split(" ").length < 2) {
   //     input = textArray;
