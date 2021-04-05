@@ -19,12 +19,22 @@
 
             <div class="form">
                 <label for="submit">Enter a guess: </label>
-                <input type="text" id="input" class="submit">
+                <input type="number" min="0" max="100" id="input" class="submit"
+                    onkeyup="if(parseInt(this.value)>100){ this.value =100; return false; }"
+                    onkeydown="javascript: return event.keyCode === 8 ||
+                    event.keyCode === 46 ? true : !isNaN(Number(event.key))"
+                    onpaste="return false;"
+                    onfocus="this.value=''">
                 <input type="submit" value="Guess" id="submit">
             </div>
             <div class="result">
-                <p>Number of guess: <span id="guessNumber"></span></p>
-                <div class="upper-lower"></div>
+                <ul class="ul">
+                    <li></li>
+                </ul>
+                <ul class="ul">
+
+                </ul>
+
             </div>
         </div>
         <script src="ap.js"></script>

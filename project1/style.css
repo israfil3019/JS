@@ -2,13 +2,25 @@ body{
     margin: 0;
     padding: 0;
     background-color: antiquewhite;
+    font-size: 1.5rem;
 }
 .container{
     display: flex;
     flex-direction: column;
     justify-content:center;
     align-items:center;
-    margin: 3% 5%; 
-    padding: 5%;
+    margin: 2% 5%; 
+    padding: 3% 5%;
     text-align: center;
+}
+li{
+    list-style-type: none;
+    font-weight: bolder;
+}
+ul{
+    font-size: xx-large;
+    font-weight: bolder;
+}
+input{
+    padding: .5rem;
 }
