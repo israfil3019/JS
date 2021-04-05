@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,26 @@
     <link rel="stylesheet" href="style.css">
     <title>Guess Number</title>
 </head>
+
 <body>
-    <script src="ap.js"></script>
-</body>
+
+    <body>
+        <div class="container">
+            <h1>Guess The Number</h1>
+
+            <p>Number between 1 - 100<br>Guess it!</p>
+
+            <div class="form">
+                <label for="submit">Enter a guess: </label>
+                <input type="text" id="input" class="submit">
+                <input type="submit" value="Guess" id="submit">
+            </div>
+            <div class="result">
+                <p>Number of guess: <span id="guessNumber"></span></p>
+                <div class="upper-lower"></div>
+            </div>
+        </div>
+        <script src="ap.js"></script>
+    </body>
+
 </html>
