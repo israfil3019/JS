@@ -1,0 +1,23 @@
+*{    
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.form{
+    width:100%;
+}
+input{
+    padding: .5rem;
+    font-size: larger;
+}
+#input{
+    width: 60%;
+    margin: 2%;
+}
