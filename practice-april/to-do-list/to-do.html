@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
     <title>TO-DO</title>
-</head>
-<body>
-    <h1>To-Do List</h1>
+  </head>
+  <body>
+    <h1><i class="fa fa-list-alt" aria-hidden="true"></i> To-Do List</h1>
     <div class="form">
-        <input class="form-control" type="text" name="todo" id = "input" placeholder="Bir Todo Girin">
-        <input type="submit" value="Add" id="submit">
+      <input class="form-control" type="text" name="todo" id="input" />
+      <input type="submit" value="Add" id="submit" />
     </div>
-    <h2>My Todos</h2>
-    <ul id="myList"></ul>
+    <div class="todos">
+      <h2>My To-Do List</h2>
+      <ul class="myList" id="myList">
+        <li class="myList__Item">
+          <button class="checkBtn">
+            <i class="fa fa-square-o" aria-hidden="true"></i>
+          </button>Create a html page for to-do app!<button class="deleteBtn">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </button>
+        </li>
+      </ul>
+      <div class="clearBtn">
+        <input type="submit" value="Clear All Todos" id="clear">
+      </div>
+    </div>
     <script src="to-do.js"></script>
-</body>
+  </body>
 </html>
