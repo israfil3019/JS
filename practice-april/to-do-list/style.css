@@ -1,23 +1,150 @@
 *{    
     margin: 0;
     padding: 0;
-    text-align: center;
+    font-family: 'Dela Gothic One', cursive;
+    
+
 }
 body{
+    background-image: url("img/journaling.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    color: cadetblue;
+}
+h1{
+    margin: 1rem;
+    font-size: 3rem;
+    color: cadetblue;
+}
+h1>i{
+    color: cadetblue;
+}
+.todos{
+    text-align: center;
+    border-radius: 2rem;
+    padding: 1rem;
+    background-color: rgba(218, 180, 134, 0.644);
+    max-width: 60%;
+    min-width: 40%;
+}
+.todos h2{
+    margin-bottom: 1rem;
+    font-size: 2rem;
 }
 .form{
-    width:100%;
+    background-color:rgba(218, 180, 134, 0.644) ;
+    width:50%;
+    margin: 1rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
 }
-input{
-    padding: .5rem;
-    font-size: larger;
+#submit{
+    height: 3rem;
+    padding: 0 1rem;
+    margin: 1rem 1rem 1rem .5rem;
+    border-style: none;
+    outline:none;
+    border-radius: 1rem;
+    font-size: 1rem;
+    font-weight: bolder;
+    color: cadetblue;
+}
+#submit:hover{
+    background-color: cadetblue;
+    color: aliceblue;
+    cursor: pointer;
 }
 #input{
-    width: 60%;
-    margin: 2%;
+    box-sizing: border-box;
+    padding: 0 .5rem;
+    width: 90%;
+    height: 3rem;
+    margin: 1rem .5rem 1rem 1rem;
+    margin-right: 0;
+    border-style: none;
+    outline: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+    color: cadetblue;
+}
+.myList__Item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgb(255, 208, 205);
+    background-color: rgb(255, 208, 205);
+    box-shadow: 1px 5px 6px rgb(54, 54, 54);
+    border-radius: 1rem;
+    margin: 10px 3px;
+    padding: 3px;
+    font-size: 1rem;
+    list-style-type: none;
+    cursor: pointer;
+}
+.myList__Item-second{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgb(168, 233, 184);
+    background-color: rgb(168, 233, 184);
+    box-shadow: 1px 5px 6px rgb(54, 54, 54);
+    border-radius: 1rem;
+    margin: 10px 3px;
+    padding: 3px;
+    font-size: 1rem;
+    list-style-type: none;
+    cursor: pointer;
+    text-decoration: line-through 3px;
+}
+.myList__Item:hover{
+    background-color: rgb(247, 208, 149);
+    box-shadow: 1px 5px 6px rgb(145, 142, 142);
+}
+.myList__Item-second:hover{
+    background-color: rgb(190, 231, 201);
+    box-shadow: 1px 5px 6px rgb(145, 142, 142);
+}
+button{
+    font-size: large;
+    background: none;
+    border: none;
+    margin: .5rem;
+    padding: 0 .3rem .2rem .3rem;
+    outline: none;
+    border-radius: 20%;
+    cursor: pointer;
+    color: cadetblue;
+}
+.deleteBtn:hover{
+    background-color: rgb(211, 101, 97);
+    color: antiquewhite;
+}
+.checkBtn:hover{
+    background-color: rgb(168, 233, 184);
+    color: white;
+}
+#clear{
+    margin: 5px;
+    padding: 5px;
+    border:none;
+    background-color: rgb(247, 188, 188);
+    color: cadetblue;
+    box-shadow: 1px 5px 6px rgb(54, 54, 54);
+    border-radius: 2rem;
+    outline: none;
+    cursor: pointer;
+    width: 90%;
+}
+#clear:hover{
+    background-color: rgb(211, 101, 97);
+    box-shadow: 1px 5px 6px rgb(121, 118, 118);
+    color: antiquewhite;
 }
