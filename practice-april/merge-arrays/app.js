@@ -1,3 +1,8 @@
+function mergeArrays(ArrayA, ArrayB) {
+    myArray = ArrayA.concat(ArrayB);
+    return myArray.sort((a,b)=>a-b);
+}
+
 
 let desc = "with empty arrays";
 let actual = mergeArrays([], []);
