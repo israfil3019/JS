@@ -62,3 +62,24 @@ function clickHold() {
   }
 }
 
+const btnNew = document.querySelector('.btn--new');
+
+btnNew.addEventListener('click', newGame);
+
+function newGame() {
+  scores[0] = 0;
+  scores[1] = 0;
+  playerScoresElms[0].textContent = 0;
+  playerScoresElms[1].textContent = 0;
+  currentScoreElms[0].textContent = 0;
+  currentScoreElms[1].textContent = 0;
+  btnRoll.addEventListener('click', clickRollDice);
+  btnHold.addEventListener('click', clickHold);
+  sectionPlayers[0].classList.remove('player--winner');
+  sectionPlayers[1].classList.remove('player--winner');
+  sectionPlayers[0].classList.add('player--active');
+  sectionPlayers[1].classList.remove('player--active');
+  currentScore = 0;
+  activePlayer = 0;
+  diceElm.classList.add('hidden');
+}
