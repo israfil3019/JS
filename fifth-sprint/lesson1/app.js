@@ -38,3 +38,27 @@ function clickRollDice() {
     currentScoreElms[activePlayer].textContent = currentScore;
   }
 }
+
+const btnHold = document.querySelector('.btn--hold');
+const playerScoresElms = document.querySelectorAll('.score');
+const scores = [0, 0];
+
+btnHold.addEventListener('click', clickHold);
+
+function clickHold() {
+  scores[activePlayer] += currentScore;
+  playerScoresElms[activePlayer].textContent = scores[activePlayer];
+
+  if (scores[activePlayer] >= 50) {
+    sectionPlayers[activePlayer].classList.add('player--winner');
+    btnHold.removeEventListener('click', clickHold);
+    btnRoll.removeEventListener('click', clickRollDice);
+  } else {
+    currentScore = 0;
+    currentScoreElms[activePlayer].textContent = 0;
+    activePlayer = 1 - activePlayer;
+    sectionPlayers[0].classList.toggle('player--active');
+    sectionPlayers[1].classList.toggle('player--active');
+  }
+}
+
