@@ -58,3 +58,79 @@
 //   console.log(item);
 // }
 
+// object methods
+const person = {
+  firstName: 'Barry',
+  lastName: 'Mitchell',
+  birthYear: 1977,
+  skills: ['JS', 'AWS', 'Dockers', 'Python'],
+
+  calcAgeBad: function (bYear) {
+    return 2021 - bYear;
+  },
+
+  calcAge: function () {
+    console.log(this);
+    return 2021 - this.birthYear;
+  },
+};
+
+console.log(person.calcAgeBad(1977));
+
+console.log(person.calcAge());
+
+// understaning this
+
+console.log(this);
+
+const calcAge = function (birthYear) {
+  console.log('Regular Function in Global Scope');
+  console.log(this);
+  return 2021 - birthYear;
+};
+
+calcAge(1977);
+
+const calcAgeArrow = (birthYear) => {
+  console.log('Regular Function in Global Scope');
+  console.log(this);
+  return 2021 - birthYear;
+};
+
+calcAgeArrow();
+
+const person = {
+  firstName: 'Barry',
+  lastName: 'Mitchell',
+  birthYear: 1977,
+  skills: ['JS', 'AWS', 'Dockers', 'Python'],
+
+  calcAge: function () {
+    console.log('Regular Function Method in Object');
+    console.log(this);
+    return 2021 - this.birthYear;
+  },
+
+  calcAgeArrow: () => {
+    console.log('Arrow Function Method in Object');
+    console.log(this);
+    return 2021 - this.birthYear;
+  },
+};
+
+person.calcAge();
+person.calcAgeArrow();
+
+const baby = {
+  nickname: 'Tina',
+  birthYear: 2019,
+};
+
+baby.calcAge = person.calcAge;
+console.log(baby.calcAge());
+
+const newPerson = person;
+newPerson.firstName = 'Alexis';
+console.log(newPerson.firstName);
+console.log(person.firstName);
+
