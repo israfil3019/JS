@@ -250,7 +250,7 @@
 // div1.style.backgroundColor = firstColor.rgb();
 
 // constructing functions
-
+/*
 function Color(r, g, b) {
   this.r = r;
   this.g = g;
@@ -260,15 +260,15 @@ function Color(r, g, b) {
   };
 }
 
-// Color.prototype.rgb = function () {
-//   const { r, g, b } = this;
-//   return `rgb(${r}, ${g}, ${b})`;
-// };
+Color.prototype.rgb = function () {
+  const { r, g, b } = this;
+  return `rgb(${r}, ${g}, ${b})`;
+};
 
-// Color.prototype.hex = function () {
-//   const { r, g, b } = this;
-//   return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-// };
+Color.prototype.hex = function () {
+  const { r, g, b } = this;
+  return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+};
 
 console.log(Color(55, 55, 55));
 
@@ -278,10 +278,149 @@ console.log(color1);
 const color2 = new Color(155, 155, 155);
 console.log(color2);
 
-// div1.style.backgroundColor = color1.rgb();
-// div2.style.backgroundColor = color2.hex();
+div1.style.backgroundColor = color1.rgb();
+div2.style.backgroundColor = color2.hex();
 
 const color3 = new Color(0, 0, 0);
 
 color1.test();
 
+let arr = [1, 2, 3];
+*/
+/*
+// Class declaration
+class ColorClass {
+  constructor(r, g, b, name) {
+    this.r = r;
+    this.g = g;
+    this.b = b;
+    this.name = name;
+  }
+
+  rgb() {
+    const { r, g, b } = this;
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  rgba(a = 1.0) {
+    const { r, g, b } = this;
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
+  }
+
+  hex() {
+    const { r, g, b } = this;
+    return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  }
+
+  // adding static method to Class, not available in instances
+  static test() {
+    console.log('This is static method');
+  }
+}
+
+const red = new ColorClass(255, 67, 89, 'kırmızı');
+const white = new ColorClass(255, 255, 255, 'beyaz');
+
+div1.style.backgroundColor = red.rgba(0.8);
+div2.style.backgroundColor = white.rgb();
+
+// examples of static methods in Objects and Arrays
+
+const arr = [1, 2, 3, 4];
+// arr.from does not exist
+// but we can use Array.from() because this method is static
+
+const person = {
+  name: 'Barry',
+  age: 44,
+};
+
+for (let item of Object.keys(person)) console.log(item);
+// Object.keys() is a static method
+*/
+/*
+class Pet {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  info() {
+    return `This pet's name is ${this.name} and it is ${this.age} years old.`;
+  }
+}
+
+// const pet1 = new Pet('Karabaş', 5);
+// console.log(pet1.info());
+
+class Dog extends Pet {
+  eat() {
+    return `${this.name} eats meat.`;
+  }
+}
+
+const karabas = new Dog('Karabaş', 5);
+// console.log(karabas.eat());
+// console.log(karabas.info());
+// console.log(karabas.age);
+
+class Cat extends Pet {
+  constructor(name, age, eyes = 'black') {
+    super(name, age);
+    this.eyes = eyes;
+  }
+
+  eat() {
+    return `${this.name} eats fish.`;
+  }
+
+  info() {
+    return `This pet's name is ${this.name} and it is ${this.age} years old and it has ${this.eyes} eyes.`;
+  }
+}
+
+const tekir = new Cat('Tekir', 3, 'blue');
+
+console.log(tekir.eat());
+console.log(tekir.info());
+*/
+/*
+class Pet {
+  // private properties
+  #age;
+
+  constructor(name, age) {
+    this._name = name;
+    this.#age = age;
+  }
+
+  info() {
+    return `This pet's name is ${this._name} and it is ${this.age} years old.`;
+  }
+
+  #test() {
+    return 'private method';
+  }
+
+  get petAge() {
+    return this.#age;
+  }
+
+  set petAge(newAge) {
+    // if required validation
+    this.#age = newAge;
+  }
+
+  setPetAge(newAge) {
+    // if required validation
+    this.#age = newAge;
+  }
+}
+
+const karabas = new Pet('Karbaş', 5);
+
+console.log(karabas.petAge); // here getter works
+karabas.petAge = 4; // here setter works
+karabas.setPetAge(11);
+console.log(karabas.petAge);
+*/
