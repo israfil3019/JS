@@ -134,88 +134,154 @@
 // console.log(newPerson.firstName);
 // console.log(person.firstName);
 
-const hotel = {
-  name: 'Hotel Clarusway',
-  categories: ['Spa', 'Swimming Pool', 'Resort'],
-  options: ['just stay', 'free breakfast', 'all inclusive'],
-  rooms: ['2-bed', '3-bed', '4-bed'],
-  receptionHours: {
-    mon: {
-      open: 8,
-      close: 22,
-    },
-    fri: {
-      open: 9,
-      close: 21,
-    },
-    sat: {
-      open: 10,
-      close: 20,
-    },
-  },
-};
+// const hotel = {
+//   name: 'Hotel Clarusway',
+//   categories: ['Spa', 'Swimming Pool', 'Resort'],
+//   options: ['just stay', 'free breakfast', 'all inclusive'],
+//   rooms: ['2-bed', '3-bed', '4-bed'],
+//   receptionHours: {
+//     mon: {
+//       open: 8,
+//       close: 22,
+//     },
+//     fri: {
+//       open: 9,
+//       close: 21,
+//     },
+//     sat: {
+//       open: 10,
+//       close: 20,
+//     },
+//   },
+// };
 
 // destructuring objects
-const arr = [1, 2, 3, 4, 6];
+// const arr = [1, 2, 3, 4, 6];
 
-let [x, , y, ...others] = arr;
-console.log(x, y, others);
+// let [x, , y, ...others] = arr;
+// console.log(x, y, others);
 
-const { name, options, rooms, local = 'Paris' } = hotel;
+// const { name, options, rooms, local = 'Paris' } = hotel;
 
-console.log(name, options, rooms, local);
+// console.log(name, options, rooms, local);
 
-const { name: hotelName, rooms: hotelRooms, local2 = 'not available' } = hotel;
+// const { name: hotelName, rooms: hotelRooms, local2 = 'not available' } = hotel;
 
-console.log(hotelName, hotelRooms, local2);
+// console.log(hotelName, hotelRooms, local2);
 
 // nested objects
 
-const { mon } = hotel.receptionHours;
-console.log(mon);
+// const { mon } = hotel.receptionHours;
+// console.log(mon);
 
-const {
-  fri: { open, close },
-} = hotel.receptionHours;
+// const {
+//   fri: { open, close },
+// } = hotel.receptionHours;
 
-console.log(open, close);
+// console.log(open, close);
 
-// short circuting
-const guests = hotel.numGuests || 50;
-console.log(guests);
+// // short circuting
+// const guests = hotel.numGuests || 50;
+// console.log(guests);
 
-// nullish coalescing operator
-hotel.numGuests = 0;
-const guests2 = hotel.numGuests || 40;
-console.log(guests2);
+// // nullish coalescing operator
+// hotel.numGuests = 0;
+// const guests2 = hotel.numGuests || 40;
+// console.log(guests2);
 
-const guests3 = hotel.numGuests ?? 40;
-console.log(guests3);
+// const guests3 = hotel.numGuests ?? 40;
+// console.log(guests3);
 
-// chaining
-console.log(hotel.receptionHours.mon.open);
-console.log(hotel.receptionHours?.tue?.open);
+// // chaining
+// console.log(hotel.receptionHours.mon.open);
+// console.log(hotel.receptionHours?.tue?.open);
 
-const arr = [2, 4, 6, 8];
+// const arr = [2, 4, 6, 8];
 
-const person = {
-  firstName: 'Barry',
-  lastName: 'Mitchell',
-  birthYear: 1977,
-  skills: ['JS', 'AWS', 'Dockers', 'Python'],
+// const person = {
+//   firstName: 'Barry',
+//   lastName: 'Mitchell',
+//   birthYear: 1977,
+//   skills: ['JS', 'AWS', 'Dockers', 'Python'],
 
-  calcAgeBad: function (bYear) {
-    return 2021 - bYear;
-  },
+//   calcAgeBad: function (bYear) {
+//     return 2021 - bYear;
+//   },
 
-  calcAge: function () {
-    console.log(this);
-    return 2021 - this.birthYear;
-  },
-};
+//   calcAge: function () {
+//     console.log(this);
+//     return 2021 - this.birthYear;
+//   },
+// };
 
-Array.prototype.push = function () {
-  console.log('this is new push mehthod');
-};
+// Array.prototype.push = function () {
+//   console.log('this is new push mehthod');
+// };
 
-const arr2 = [4, 5, 6, 7, 8];
+// const arr2 = [4, 5, 6, 7, 8];
+
+// const div1 = document.getElementById('mydiv1');
+// const div2 = document.getElementById('mydiv2');
+
+// function makeColor(r, g, b) {
+//   const color = {};
+//   color.r = r;
+//   color.g = g;
+//   color.b = b;
+
+//   color.rgb = function () {
+//     const { r, g, b } = this;
+//     return `rgb(${r}, ${g}, ${b})`;
+//   };
+
+//   color.hex = function () {
+//     const { r, g, b } = this;
+//     return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+//   };
+
+//   return color;
+// }
+
+// const firstColor = makeColor(55, 55, 55);
+// console.log(firstColor);
+// console.log(firstColor.rgb());
+// console.log(firstColor.hex());
+
+// div1.style.backgroundColor = firstColor.rgb();
+
+// constructing functions
+
+function Color(r, g, b) {
+  this.r = r;
+  this.g = g;
+  this.b = b;
+  this.test = function () {
+    console.log('this is test function');
+  };
+}
+
+// Color.prototype.rgb = function () {
+//   const { r, g, b } = this;
+//   return `rgb(${r}, ${g}, ${b})`;
+// };
+
+// Color.prototype.hex = function () {
+//   const { r, g, b } = this;
+//   return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+// };
+
+console.log(Color(55, 55, 55));
+
+const color1 = new Color(55, 55, 55);
+console.log(color1);
+
+const color2 = new Color(155, 155, 155);
+console.log(color2);
+
+// div1.style.backgroundColor = color1.rgb();
+// div2.style.backgroundColor = color2.hex();
+
+const color3 = new Color(0, 0, 0);
+
+color1.test();
+
