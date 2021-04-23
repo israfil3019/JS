@@ -1,0 +1,100 @@
+body {
+  height: 100vh;
+  background: linear-gradient(to top left, #21456e, #85abf3);
+}
+h1,
+h2 {
+  font-family: sans-serif;
+  text-align: center;
+  color: white;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+button,
+input {
+  height: 50px;
+  width: 100px;
+  background-color: rgb(255, 255, 255);
+}
+
+.button1 {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button2 {
+  background-color: #eeea11; /* Green */
+  border: none;
+  color: rgb(10, 0, 0);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button3 {
+  background-color: #ffffff; /* Green */
+  border: none;
+  color: rgb(10, 0, 0);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button4 {
+  background-color: #ff0000; /* Green */
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  font-size: xx-large;
+}
+
+.outer,
+.middle,
+.inner1,
+.inner2 {
+  display: block;
+  width: 520px;
+  padding: 15px;
+  margin: 15px;
+  text-decoration: none;
+}
+.outer {
+  border: 1px solid red;
+  color: red;
+}
+.middle {
+  border: 1px solid green;
+  color: green;
+  width: 460px;
+}
+.inner1,
+.inner2 {
+  border: 1px solid purple;
+  color: purple;
+  width: 400px;
+}
