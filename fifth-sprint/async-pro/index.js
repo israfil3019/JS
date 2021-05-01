@@ -74,13 +74,23 @@ function breakfastTime() {
   myLog(' all finished');
 }
 
-setTimeout(() => {
-    myLog(brewTea());
-    setTimeout(breakfastTime, 0);
-}, 2000);
-setTimeout(() => {
-    myLog(prepareBreakfast());
-}, 1999);
-for (let index = 0; index < 10; index++) {
-  console.log('object');
+// setTimeout(() => {
+//     myLog(brewTea());
+//     setTimeout(breakfastTime, 0);
+// }, 2000);
+// setTimeout(() => {
+//     myLog(prepareBreakfast());
+// }, 1999);
+// for (let index = 0; index < 10; index++) {
+//   console.log('object');
+// }
+
+function successHandler(response) {
+  console.log(response);
 }
+
+function errorHandler(error) {
+  console.log(error);
+}
+
+navigator.geolocation.getCurrentPosition(successHandler, errorHandler);
