@@ -63,46 +63,22 @@
 //     )
 //     .join('')
 // );
-// const swapCase = function(letters){
-//     let newLetters = "";
-//     for(let i = 0; i<letters.length; i++){
-//         if(letters[i] === letters[i].toLowerCase()){
-//             newLetters += letters[i].toUpperCase();
-//         }else {
-//             newLetters += letters[i].toLowerCase();
-//         }
-//     }
-//     console.log(newLetters);
-//     return newLetters;
-// }
 
-// const text = 'So, today we have REALLY good day';
+// filter ()
 
-// const swappedText = swapCase(text); 
+// const words = [
+//   'sprayyyyyyy',
+//   'limit',
+//   'elite',
+//   'exuberant',
+//   'destruction',
+//   'present',
+// ];
 
-// console.log(text.replace(/\w{1}/g, val =>
-//     val === val.toLowerCase() ? val.toUpperCase() : val.toLowerCase()));
+// const result = words.map((word) => (word.length > 6 ? word : 'shorter'));
 
-// console.log(text.split("").map(l=>l==l.toLowerCase()?l.toUpperCase():l.toLowerCase()).join(""));
-
-// console.log(str.split("").map(i => i==i.toLowerCase() ? i.toUpperCase() : i.toLowerCase()).join(""))
-
-
-filter ()
-
-const words = [
-  'sprayyyyyyy',
-  'limit',
-  'elite',
-  'exuberant',
-  'destruction',
-  'present',
-];
-
-const result = words.map((word) => (word.length > 6 ? word : 'shorter'));
-
-const result1 = words.filter((word) => word.length > 6);
-console.log(result1);
+// const result1 = words.filter((word) => word.length > 6);
+// console.log(result1);
 
 // reduce ()
 
@@ -125,3 +101,80 @@ let unique = myArray.reduce(function (acc, item) {
 }, []);
 
 console.log(unique);
+
+var myObject = { a: 1, b: 2, c: 3 };
+
+Object.keys(myObject).map(function (key, index) {
+  myObject[key] *= 2;
+});
+
+console.log(myObject);
+// => { 'a': 2, 'b': 4, 'c': 6 }
+
+for (let item of Object.keys(myObject)) myObject[item] *= 3;
+
+
+// CLOSURES
+
+// // with global variables
+// let counter = 0;
+
+// function add() {
+//   counter += 1;
+//   return counter;
+// }
+
+// add();
+// add();
+// add();
+
+// console.log(counter);
+
+// with local variables
+// let counter = 0;
+
+// function add() {
+//   var counter = 0;
+//   counter += 1;
+//   return counter;
+// }
+
+// add();
+// add();
+// add();
+
+// console.log(add());
+
+// with closure
+
+function add() {
+  let counter = 0;
+  return () => {
+    counter += 1;
+    return counter;
+  };
+}
+
+const addFunc = add();
+
+console.log(addFunc());
+console.log(addFunc());
+console.log(addFunc());
+
+function fontSize(size) {
+  return function () {
+    document.querySelector('p').style.fontSize = size + 'pt';
+  };
+}
+
+const fs12 = fontSize(12);
+
+const allFonts = [];
+
+for (let i = 1; i < 20; i++) {
+  allFonts.push(fontSize(i));
+}
+
+document.getElementById('btn12').addEventListener('click', fs12);
+document.getElementById('btn14').addEventListener('click', fontSize(14));
+document.getElementById('btn16').addEventListener('click', allFonts[15]);
