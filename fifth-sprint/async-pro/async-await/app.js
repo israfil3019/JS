@@ -1,25 +1,25 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable arrow-body-style */
 
-// const renderCountry = (data, className = '') => {
-//   const countryElm = document.querySelector('.countries');
-//   const html = `
-//   <article class="country ${className}">
-//     <img class="country__img" src="${data.flag}" />
-//     <div class="country__data">
-//       <h3 class="country__name">${data.name}</h3>
-//       <h4 class="country__region">${data.region}</h4>
-//       <p class="country__row"><span>👫</span>${(
-//         +data.population / 1000000
-//       ).toFixed(1)} people</p>
-//       <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
-//       <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
-//     </div>
-//   </article>
-//   `;
-//   countryElm.insertAdjacentHTML('beforeend', html);
-//   countryElm.style.opacity = 1;
-// };
+const renderCountry = (data, className = '') => {
+  const countryElm = document.querySelector('.countries');
+  const html = `
+  <article class="country ${className}">
+    <img class="country__img" src="${data.flag}" />
+    <div class="country__data">
+      <h3 class="country__name">${data.name}</h3>
+      <h4 class="country__region">${data.region}</h4>
+      <p class="country__row"><span>👫</span>${(
+        +data.population / 1000000
+      ).toFixed(1)} people</p>
+      <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+      <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+    </div>
+  </article>
+  `;
+  countryElm.insertAdjacentHTML('beforeend', html);
+  countryElm.style.opacity = 1;
+};
 
 // // AJAX Calls
 // // XMLHttpRequest - XHR
@@ -170,24 +170,84 @@
 
 
 
-const wait = (seconds) => {
-  return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+// const wait = (seconds) => {
+//   return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+// };
+
+// wait(1)
+//   .then(() => {
+//     console.log('1 second passed');
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log('2 second passed');
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log('3 second passed');
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log('4 second passed');
+//     return wait(1);
+//   });
+
+// const getCountryJSONData = (url, errorMsg = 'Something went wrong') => {
+//   return fetch(url).then((response) => {
+//     if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+//     return response.json();
+//   });
+// };
+// const getCountryNeighbourData = (country) => {
+//   getCountryJSONData(
+//     `https://restcountries.eu/rest/v2/name/${country}`,
+//     'No such country'
+//   )
+//     .then((data) => {
+//       console.log(data);
+//       renderCountry(data[0]);
+//       const neighbours = data[0].borders;
+//       for (const neighbour of neighbours) {
+//         getCountryJSONData(
+//           `https://restcountries.eu/rest/v2/alpha/${neighbour}`,
+//           'No Neighbour'
+//         )
+//       .then((data) => {
+//         renderCountry(data, 'neighbour');
+//       })
+//       .catch((err) => console.log(err.message));
+//     }
+//   })
+// }
+// getCountryNeighbourData('Turkey');
+
+const getCountryNeighbourDataAsync = async (country) => {
+  try {
+    let response = await fetch(
+      `https://restcountries.eu/rest/v2/name/${country}`
+    );
+    console.log(response);
+
+    if (!response.ok)
+      throw new Error(`something went wrong (${response.status})`);
+
+    let data = await response.json();
+
+    renderCountry(data[0]);
+
+    const neighbour = data[0].borders[0];
+
+    response = await fetch(
+      `https://restcountries.eu/rest/v2/alpha/${neighbour}`
+    );
+
+    if (!response.ok) throw new Error(`No neighbour (${response.status})`);
+
+    data = await response.json();
+    renderCountry(data, 'neighbour');
+  } catch (err) {
+    console.log(err.message);
+  }
 };
 
-wait(1)
-  .then(() => {
-    console.log('1 second passed');
-    return wait(1);
-  })
-  .then(() => {
-    console.log('2 second passed');
-    return wait(1);
-  })
-  .then(() => {
-    console.log('3 second passed');
-    return wait(1);
-  })
-  .then(() => {
-    console.log('4 second passed');
-    return wait(1);
-  });
+getCountryNeighbourDataAsync('New Zealand');
