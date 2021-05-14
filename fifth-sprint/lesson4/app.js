@@ -54,26 +54,50 @@
 
 // SET
 
-const mySet = new Set();
+// const mySet = new Set();
 
-mySet.add(1);
-mySet.add(2);
-mySet.add(2);
+// mySet.add(1);
+// mySet.add(2);
+// mySet.add(2);
 
-mySet.add("string");
+// mySet.add("string");
 
-const obj = { a: 1, b: 2 };
-mySet.add(obj);
+// const obj = { a: 1, b: 2 };
+// mySet.add(obj);
 
-// console.log(mySet);
+// // console.log(mySet);
 
-mySet.add({ a: 1, b: 2 });
+// mySet.add({ a: 1, b: 2 });
 
-// console.log(mySet.has(1));
-mySet.delete(1);
+// // console.log(mySet.has(1));
+// mySet.delete(1);
 
-// console.log(mySet.size);
+// // console.log(mySet.size);
 
-for (let value of mySet) console.log(value);
+// for (let value of mySet) console.log(value);
 
-mySet.forEach((value, i) => console.log(value, i));
+// mySet.forEach((value, i) => console.log(value, i));
+
+const arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+function cleanArr(arr) {
+  let map = new Map();
+
+  for (let value of arr) {
+    let key = value.toLowerCase().split("").sort().join(""); // anp
+    console.log(key);
+    // map.set(key, value);
+
+    if (map.has(key)) {
+      const newItem = map.get(key);
+      newItem.push(value);
+      map.set(key, newItem);
+    } else {
+      map.set(key, [value]);
+    }
+  }
+
+  return map.values();
+}
+
+console.log(cleanArr(arr));
