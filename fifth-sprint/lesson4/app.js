@@ -78,26 +78,68 @@
 
 // mySet.forEach((value, i) => console.log(value, i));
 
-const arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+// const arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
 
-function cleanArr(arr) {
-  let map = new Map();
+// function cleanArr(arr) {
+//   let map = new Map();
 
-  for (let value of arr) {
-    let key = value.toLowerCase().split("").sort().join(""); // anp
-    console.log(key);
-    // map.set(key, value);
+//   for (let value of arr) {
+//     let key = value.toLowerCase().split("").sort().join(""); // anp
+//     console.log(key);
+//     // map.set(key, value);
 
-    if (map.has(key)) {
-      const newItem = map.get(key);
-      newItem.push(value);
-      map.set(key, newItem);
-    } else {
-      map.set(key, [value]);
-    }
-  }
+//     if (map.has(key)) {
+//       const newItem = map.get(key);
+//       newItem.push(value);
+//       map.set(key, newItem);
+//     } else {
+//       map.set(key, [value]);
+//     }
+//   }
 
-  return map.values();
-}
+//   return map.values();
+// }
 
-console.log(cleanArr(arr));
+// console.log(cleanArr(arr));
+
+// Array.from()
+
+// console.log(Array.from("Barry"));
+// const set = new Set(["foo", "bar", "baz", "bar"]);
+
+// console.log(Array.from(set));
+
+// const map = new Map([
+//   [1, 2],
+//   [3, 4],
+//   [5, 6],
+// ]);
+
+// console.log(Array.from(map));
+// console.log(Array.from(map.values()));
+
+// const savings = Array.from(document.querySelectorAll(".savings"));
+// console.log(savings);
+
+// const savings2 = Array.from(document.querySelectorAll(".savings"), (el) =>
+//   Number(el.textContent.replace("$", ""))
+// );
+
+// console.log(savings2);
+
+// console.log(Array.from([1, 2, 3], (x) => x * x));
+
+// console.log(Array.from(new Array(5)));
+
+// console.log(Array.from({ length: 5 }));
+// console.log(Array.from({ length: 5 }, (value, i) => i));
+// console.log(Array.from({ length: 5 }, (_, i) => i));
+
+const range = (start, stop, step) =>
+  Array.from(
+    { length: Math.ceil((stop - start) / step) },
+    (_, i) => start + i * step
+  );
+
+console.log(range(4, 10, 1));
+console.log(range(1, 10, 2));
