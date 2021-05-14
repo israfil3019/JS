@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable arrow-body-style */
 
-const renderCountry = (data, className = '') => {
-  const countryElm = document.querySelector('.countries');
+const renderCountry = (data, className = "") => {
+  const countryElm = document.querySelector(".countries");
   const html = `
   <article class="country ${className}">
     <img class="country__img" src="${data.flag}" />
@@ -17,7 +17,7 @@ const renderCountry = (data, className = '') => {
     </div>
   </article>
   `;
-  countryElm.insertAdjacentHTML('beforeend', html);
+  countryElm.insertAdjacentHTML("beforeend", html);
   countryElm.style.opacity = 1;
 };
 
@@ -102,7 +102,6 @@ const renderCountry = (data, className = '') => {
 //     .catch((err) => console.log(err.message));
 // };
 
-
 // const getCountryJSONData = (url, errorMsg = 'Something went wrong') => {
 //   return fetch(url).then((response) => {
 //     if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
@@ -110,7 +109,6 @@ const renderCountry = (data, className = '') => {
 //     return response.json();
 //   });
 // };
-
 
 // const getCountryNeighbourData = (country) => {
 //   getCountryJSONData(
@@ -134,8 +132,6 @@ const renderCountry = (data, className = '') => {
 //     })
 //     .catch((err) => console.log(err.message));
 // };
-
-
 
 // getCountryNeighbourData('new zealand');
 
@@ -168,8 +164,6 @@ const renderCountry = (data, className = '') => {
 //   }, 1000);
 // }, 1000);
 
-
-
 // const wait = (seconds) => {
 //   return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
 // };
@@ -192,7 +186,7 @@ const renderCountry = (data, className = '') => {
 //     return wait(1);
 //   });
 
-// const getCountryJSONData = (url, errorMsg = 'Something went wrong') => {
+// const getCountryJSONData = (url, errorMsg = "Something went wrong") => {
 //   return fetch(url).then((response) => {
 //     if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
 //     return response.json();
@@ -201,53 +195,74 @@ const renderCountry = (data, className = '') => {
 // const getCountryNeighbourData = (country) => {
 //   getCountryJSONData(
 //     `https://restcountries.eu/rest/v2/name/${country}`,
-//     'No such country'
-//   )
-//     .then((data) => {
-//       console.log(data);
-//       renderCountry(data[0]);
-//       const neighbours = data[0].borders;
-//       for (const neighbour of neighbours) {
-//         getCountryJSONData(
-//           `https://restcountries.eu/rest/v2/alpha/${neighbour}`,
-//           'No Neighbour'
-//         )
-//       .then((data) => {
-//         renderCountry(data, 'neighbour');
-//       })
-//       .catch((err) => console.log(err.message));
+//     "No such country"
+//   ).then((data) => {
+//     console.log(data);
+//     renderCountry(data[0]);
+//     const neighbours = data[0].borders;
+//     for (const neighbour of neighbours) {
+//       getCountryJSONData(
+//         `https://restcountries.eu/rest/v2/alpha/${neighbour}`,
+//         "No Neighbour"
+//       )
+//         .then((data) => {
+//           renderCountry(data, "neighbour");
+//         })
+//         .catch((err) => console.log(err.message));
 //     }
-//   })
-// }
-// getCountryNeighbourData('Turkey');
+//   });
+// };
+// getCountryNeighbourData("Turkey");
 
-const getCountryNeighbourDataAsync = async (country) => {
+// const getCountryNeighbourDataAsync = async (country) => {
+//   try {
+//     let response = await fetch(
+//       `https://restcountries.eu/rest/v2/name/${country}`
+//     );
+//     console.log(response);
+
+//     if (!response.ok)
+//       throw new Error(`something went wrong (${response.status})`);
+
+//     let data = await response.json();
+
+//     renderCountry(data[0]);
+
+//     const neighbour = data[0].borders[0];
+
+//     response = await fetch(
+//       `https://restcountries.eu/rest/v2/alpha/${neighbour}`
+//     );
+
+//     if (!response.ok) throw new Error(`No neighbour (${response.status})`);
+
+//     data = await response.json();
+//     renderCountry(data, 'neighbour');
+//   } catch (err) {
+//     console.log(err.message);
+//   }
+// };
+
+// getCountryNeighbourDataAsync('New Zealand');
+
+const getCountryNeighbourDataAsyncAxios = async (country) => {
   try {
-    let response = await fetch(
+    const response = await axios.get(
       `https://restcountries.eu/rest/v2/name/${country}`
     );
     console.log(response);
 
-    if (!response.ok)
-      throw new Error(`something went wrong (${response.status})`);
+    renderCountry(response.data[0]);
 
-    let data = await response.json();
-
-    renderCountry(data[0]);
-
-    const neighbour = data[0].borders[0];
-
-    response = await fetch(
-      `https://restcountries.eu/rest/v2/alpha/${neighbour}`
-    );
-
-    if (!response.ok) throw new Error(`No neighbour (${response.status})`);
-
-    data = await response.json();
-    renderCountry(data, 'neighbour');
+    response.data[0].borders.forEach(async (neighbour) => {
+      const neighbourResponse = await axios.get(
+        `https://restcountries.eu/rest/v2/alpha/${neighbour}`
+      );
+      renderCountry(neighbourResponse.data, "neighbour");
+    });
   } catch (err) {
     console.log(err.message);
   }
 };
 
-getCountryNeighbourDataAsync('New Zealand');
+getCountryNeighbourDataAsyncAxios("Turkey");

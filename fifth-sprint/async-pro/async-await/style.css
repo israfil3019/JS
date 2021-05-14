@@ -38,11 +38,7 @@ body {
   font-family: system-ui;
   color: #555;
   background-color: #f7f7f7;
-  min-height: 100vh;
   background: linear-gradient(to top left, #21456e, #85abf3);
-  display: flex;
-  /* align-items: center;*/
-  justify-content: center;
 }
 
 .container {
@@ -52,9 +48,8 @@ body {
 }
 
 .countries {
-  /* margin-bottom: 8rem; */
   display: flex;
-
+  flex-wrap: wrap;
   font-size: 2rem;
   opacity: 0;
   transition: opacity 1s;
@@ -64,9 +59,9 @@ body {
   background-color: #fff;
   box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.1);
   font-size: 1.8rem;
-  width: 30rem;
+  width: 25rem;
   border-radius: 0.7rem;
-  margin: 0 3rem;
+  margin: 0 2rem;
   /* overflow: hidden; */
 }
 
@@ -85,11 +80,11 @@ body {
 
 .neighbour {
   transform: scale(0.8) translateY(1rem);
-  margin-left: 0;
+  margin: 0;
 }
 
 .country__img {
-  width: 30rem;
+  width: 25rem;
   height: 17rem;
   object-fit: cover;
   background-color: #eee;
