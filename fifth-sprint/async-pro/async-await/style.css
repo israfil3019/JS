@@ -37,8 +37,7 @@ html {
 body {
   font-family: system-ui;
   color: #555;
-  background-color: #f7f7f7;
-  background: linear-gradient(to top left, #21456e, #85abf3);
+  background-color: #757292;
 }
 
 .container {

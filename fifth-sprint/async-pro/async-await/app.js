@@ -245,24 +245,79 @@ const renderCountry = (data, className = "") => {
 
 // getCountryNeighbourDataAsync('New Zealand');
 
-const getCountryNeighbourDataAsyncAxios = async (country) => {
-  try {
-    const response = await axios.get(
-      `https://restcountries.eu/rest/v2/name/${country}`
-    );
-    console.log(response);
+// const getCountryNeighbourDataAsyncAxios = async (country) => {
+//   try {
+//     const response = await axios.get(
+//       `https://restcountries.eu/rest/v2/name/${country}`
+//     );
+//     console.log(response);
 
-    renderCountry(response.data[0]);
+//     renderCountry(response.data[0]);
 
-    response.data[0].borders.forEach(async (neighbour) => {
-      const neighbourResponse = await axios.get(
-        `https://restcountries.eu/rest/v2/alpha/${neighbour}`
-      );
-      renderCountry(neighbourResponse.data, "neighbour");
+//     response.data[0].borders.forEach(async (neighbour) => {
+//       const neighbourResponse = await axios.get(
+//         `https://restcountries.eu/rest/v2/alpha/${neighbour}`
+//       );
+//       renderCountry(neighbourResponse.data, "neighbour");
+//     });
+//   } catch (err) {
+//     console.log(err.message);
+//   }
+// };
+
+// getCountryNeighbourDataAsyncAxios("Turkey");
+
+const createImage = (imgPath) => {
+  const imgContainer = document.querySelector(".images");
+  return new Promise((resolve, reject) => {
+    const img = document.createElement("img");
+    img.src = imgPath;
+
+    img.addEventListener("load", () => {
+      imgContainer.append(img);
+      resolve(img);
     });
-  } catch (err) {
-    console.log(err.message);
-  }
+
+    img.addEventListener("error", () =>
+      reject(new Error("Myyy Image not found"))
+    );
+  });
 };
 
-getCountryNeighbourDataAsyncAxios("Turkey");
+// let currentImg;
+
+const wait = (seconds) => {
+  return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+};
+
+// createImage("images/image1.jpg")
+//   .then((img) => {
+//     currentImg = img;
+//     console.log("Image 1 loaded");
+//     return wait(3);
+//   })
+//   .then(() => {
+//     currentImg.style.display = "none";
+//     return createImage("images/image2.jpg");
+//   })
+//   .then((img) => {
+//     currentImg = img;
+//     console.log("Image 2 loaded");
+//     return wait(3);
+//   })
+//   .then(() => {
+//     currentImg.style.display = "none";
+//   });
+
+async function displayImages() {
+  let img = await createImage("images/image1.jpg");
+  console.log("Image 1 loaded");
+  await wait(3);
+  img.style.display = "none";
+  img = await createImage("images/image2.jpg");
+  console.log("Image 2 loaded");
+  await wait(3);
+  img.style.display = "none";
+}
+
+displayImages();
